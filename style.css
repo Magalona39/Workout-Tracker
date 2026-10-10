@@ -1,0 +1,310 @@
+
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+:root {
+  --bg: #101114;
+  --card: #1a1c22;
+  --input: #24262e;
+  --red: #ef3340;
+  --red-hover: #ff4b55;
+  --green: #20c878;
+  --green-hover: #17ad65;
+  --text: #f5f5f5;
+  --muted: #a5a7b0;
+  --border: #32343d;
+}
+
+body {
+  min-height: 100vh;
+  padding: 50px 20px 60px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: var(--text);
+  background:
+    radial-gradient(
+      circle at top,
+      #29202a 0%,
+      var(--bg) 48%,
+      #0b0c0f 100%
+    );
+}
+
+/* =========================
+   MAIN TITLE
+========================= */
+
+h1 {
+  margin-bottom: 28px;
+
+  color: var(--text);
+  font-size: clamp(27px, 5vw, 42px);
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-align: center;
+  text-shadow: 0 0 25px rgb(239 51 64 / 18%);
+}
+
+/* =========================
+   ALL BUTTONS
+========================= */
+
+button {
+  border: none;
+  border-radius: 9px;
+  padding: 11px 17px;
+
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
+}
+
+/* =========================
+   START WORKOUT BUTTON
+========================= */
+
+#startButton {
+  padding: 14px 30px;
+
+  background: var(--red);
+  box-shadow: 0 5px 18px rgb(239 51 64 / 20%);
+
+  font-size: 16px;
+}
+
+#startButton:hover {
+  background: var(--red-hover);
+  box-shadow: 0 7px 22px rgb(239 51 64 / 30%);
+}
+
+/* =========================
+   MESSAGE AREA
+========================= */
+
+#message {
+  min-height: 28px;
+  margin: 18px 0 24px;
+
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* =========================
+   INPUT FIELDS
+========================= */
+
+#exerciseInput,
+#sets,
+#reps {
+  min-width: 0;
+  padding: 13px 15px;
+
+  border: 1px solid var(--border);
+  border-radius: 9px;
+
+  background: var(--input);
+  color: var(--text);
+
+  font-size: 15px;
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#exerciseInput {
+  width: min(100%, 350px);
+}
+
+#exerciseInput::placeholder {
+  color: #898b96;
+}
+
+#exerciseInput:focus,
+#sets:focus,
+#reps:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgb(239 51 64 / 12%);
+}
+
+/* =========================
+   SETS AND REPS
+========================= */
+
+.setReps {
+  display: grid;
+  grid-template-columns: 65px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px 12px;
+
+  width: min(100%, 350px);
+  margin-top: 20px;
+  padding: 20px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: rgb(26 28 34 / 85%);
+}
+
+.setReps p {
+  padding: 0;
+
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+#sets,
+#reps {
+  width: 100%;
+}
+
+/* =========================
+   ADD EXERCISE BUTTON
+========================= */
+
+#addButton {
+  width: min(100%, 350px);
+  margin-top: 18px;
+  padding: 14px 20px;
+
+  background: var(--green);
+  color: #071b11;
+
+  font-size: 15px;
+  box-shadow: 0 5px 18px rgb(32 200 120 / 15%);
+}
+
+#addButton:hover {
+  background: var(--green-hover);
+  box-shadow: 0 7px 22px rgb(32 200 120 / 25%);
+}
+
+/* =========================
+   WORKOUT LIST
+========================= */
+
+#exerciseMessage {
+  width: min(100%, 450px);
+  margin-top: 32px;
+
+  list-style: none;
+}
+
+#exerciseMessage:empty {
+  display: none;
+}
+
+#exerciseMessage li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 13px;
+  padding: 16px;
+
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--red);
+  border-radius: 11px;
+
+  background: var(--card);
+  box-shadow: 0 5px 15px rgb(0 0 0 / 15%);
+
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+
+  overflow-wrap: anywhere;
+}
+
+/* =========================
+   EDIT BUTTON
+   First button in each workout
+========================= */
+
+#exerciseMessage li button:first-of-type {
+  margin-left: auto;
+
+  background: #284b75;
+  color: #dcecff;
+}
+
+#exerciseMessage li button:first-of-type:hover {
+  background: #35669d;
+}
+
+/* =========================
+   DELETE BUTTON
+   Second button in each workout
+========================= */
+
+#exerciseMessage li button:last-of-type {
+  background: #762830;
+  color: #ffe5e7;
+}
+
+#exerciseMessage li button:last-of-type:hover {
+  background: var(--red);
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 480px) {
+  body {
+    padding: 35px 16px 45px;
+  }
+
+  h1 {
+    letter-spacing: 1px;
+  }
+
+  #exerciseMessage li {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  #exerciseMessage li button {
+    padding: 9px 11px;
+    font-size: 12px;
+  }
+}
+
